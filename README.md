@@ -1,16 +1,44 @@
-# flutter_local_authentication
+# Biometric Authentication in Flutter
 
-A new Flutter project.
 
-## Getting Started
+## Dependencies
 
-This project is a starting point for a Flutter application.
+```yaml
+    local_auth: ^2.2.0
+```
 
-A few resources to get you started if this is your first Flutter project:
+## Configurations:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Android Specific Configurations
+ - Update permissions to `AndroidManifest.xml` file
+    ```xml
+        <uses-permission android:name="android.permission.USE_BIOMETRIC"/>
+    ```
+ - Update `MainActivity.kt` file. 
+    ```kt
+        import io.flutter.embedding.android.FlutterActivity //remove this line
+        import io.flutter.embedding.android.FlutterFragmentActivity //add this line
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+        class MainActivity: FlutterActivity() //remove this line
+        class MainActivity: FlutterFragmentActivity() //add this line
+    ```
+
+    output will be,
+    ```kt 
+        package com.example.flutter_local_authentication
+
+        import io.flutter.embedding.android.FlutterFragmentActivity
+
+        class MainActivity: FlutterFragmentActivity()
+
+    ```
+
+### iOS Specific Configurations
+ - Update Permission to `info.plist` file
+    ```plist
+        <key>NSFaceIDUsageDescription</key>
+	    <string>Why is my app authenticating using face id?</string>
+    ```
+
+## Reference:
+[Flutter Local Authentication Tutorial - Flutter Face ID & Fingerprint Authentication Guide](https://www.youtube.com/watch?v=cYeQCGr6F7c)
