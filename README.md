@@ -37,7 +37,7 @@
  - Update Permission to `info.plist` file
     ```plist
         <key>NSFaceIDUsageDescription</key>
-	    <string>Why is my app authenticating using face id?</string>
+        <string>Why is my app authenticating using face id?</string>
     ```
 
 ## Reference:
